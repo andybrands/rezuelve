@@ -3,325 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>REZUELVE — Energía y soluciones urgentes en Ciudad Guayana</title>
-<meta name="description" content="REZUELVE compara stock, precio y tiempo de entrega de plantas, power stations, ventiladores y enfriadores en Ciudad Guayana.">
+<title>rezuelve — Ciudad Guayana</title>
+<meta name="description" content="Compara productos, stock y comercios locales en Ciudad Guayana.">
 <style>
-:root{
-  --ink:#1d1d1f;
-  --muted:#707070;
-  --paper:#ffffff;
-  --canvas:#f5f5f7;
-  --yellow:#ffe51f;
-  --blue:#0071e3;
-  --link:#0066cc;
-  --radius:28px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}
-.wrap{max-width:1200px;margin:auto;padding:0 28px}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(250,250,252,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
-.nav{height:64px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px}
-.brand{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:800;letter-spacing:-.9px}
-.brand-mark{width:38px;height:38px;border-radius:50%;background:#111;color:var(--yellow);display:grid;place-items:center}
-.search{display:flex;align-items:center;border:1px solid #d6d6d6;background:#fff;border-radius:999px;overflow:hidden}
-.search input{border:0;outline:0;flex:1;padding:13px 16px;background:transparent}
-.search button{border:0;background:var(--blue);color:white;padding:13px 18px;font-weight:700;cursor:pointer}
-.navlinks{display:flex;gap:16px;font-size:13px;font-weight:600;color:#474747}
-.navlinks a:hover{color:#000}
-.ribbon{background:var(--yellow);font-size:13px;text-align:center;padding:8px 16px;font-weight:700}
-.hero{padding:92px 0 36px;background:#fff;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:40px}
-.eyebrow{font-size:14px;font-weight:700;color:#b64400;margin-bottom:10px}
-.hero h1{font-size:88px;line-height:.98;letter-spacing:-3px;margin:0 0 22px;max-width:650px}
-.hero h1 span{display:block}
-.hero p{font-size:21px;line-height:1.45;color:var(--muted);max-width:560px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.btn-primary{background:var(--blue);color:#fff;border-radius:999px;padding:12px 18px;font-weight:700}
-.btn-ghost{border:1px solid #1d1d1f;border-radius:999px;padding:12px 18px;font-weight:600}
-.hero-stage{position:relative;min-height:540px;border-radius:var(--radius);background:linear-gradient(180deg,#dff2ff 0%,#eef8ff 100%);overflow:hidden}
-.hero-stage:before{content:"";position:absolute;inset:auto -10% -38% -10%;height:65%;background:radial-gradient(circle at 50% 30%,rgba(0,113,227,.17),transparent 65%)}
-.hero-product{position:absolute;inset:34px 30px 80px;display:grid;place-items:center}
-.hero-product img{width:min(88%,720px);filter:drop-shadow(0 28px 26px rgba(0,0,0,.18));animation:generatorFloat 4.2s ease-in-out infinite}
-.hero-badge{position:absolute;left:32px;bottom:28px;background:#fff;border-radius:999px;padding:11px 15px;font-size:14px;font-weight:700}
-.hero-note{position:absolute;right:26px;top:26px;font-size:13px;color:#474747;background:rgba(255,255,255,.8);padding:10px 14px;border-radius:999px}
-@keyframes generatorFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-16px) rotate(1deg)}}
-
-.section{padding:110px 0}
-.gray{background:var(--canvas)}
-.section-title{font-size:56px;line-height:1.05;letter-spacing:-1.8px;margin:0 0 18px}
-.section-sub{font-size:21px;line-height:1.45;color:var(--muted);max-width:720px;margin:0 0 44px}
-
-.showcase{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:stretch}
-.showcase-tabs{display:grid;gap:10px;align-content:start}
-.tab{border:0;text-align:left;background:transparent;padding:16px 18px;border-radius:20px;color:#474747;font-weight:600;cursor:pointer}
-.tab.active{background:#fff;color:#111}
-.tab small{display:block;color:#8a8a8f;font-weight:500;margin-top:3px}
-.device-stage{position:relative;min-height:620px;background:#fff;border-radius:var(--radius);overflow:hidden}
-.device-scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .55s ease}
-.device-scene.active{opacity:1;pointer-events:auto}
-.scene-copy{position:absolute;left:40px;top:38px;z-index:2;max-width:440px}
-.scene-copy h3{font-size:44px;line-height:1.05;margin:0 0 12px}
-.scene-copy p{font-size:17px;line-height:1.45;color:var(--muted);margin:0}
-.scene-visual{position:absolute;inset:170px 20px 20px;display:grid;place-items:center}
-.scene-visual img{max-height:360px;max-width:76%;object-fit:contain}
-.generator-move{animation:machineBob 3.8s ease-in-out infinite}
-.fan-move{transform-origin:50% 80%;animation:fanOscillate 3s ease-in-out infinite}
-.cooler-move{animation:coolerHover 4s ease-in-out infinite}
-.battery-move{animation:batteryPulse 3.2s ease-in-out infinite}
-.cool-glow{position:absolute;width:340px;height:120px;border-radius:50%;background:rgba(78,193,255,.24);filter:blur(35px);bottom:46px;animation:glow 2.8s ease-in-out infinite}
-.energy-ring{position:absolute;width:300px;height:300px;border-radius:50%;border:2px solid rgba(0,113,227,.18);animation:ring 3s ease-out infinite}
-@keyframes machineBob{0%,100%{transform:translateY(0) rotate(-1.4deg)}50%{transform:translateY(-12px) rotate(1.2deg)}}
-@keyframes fanOscillate{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-@keyframes coolerHover{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes batteryPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
-@keyframes glow{0%,100%{opacity:.45;transform:scale(.9)}50%{opacity:.95;transform:scale(1.08)}}
-@keyframes ring{0%{transform:scale(.7);opacity:.7}100%{transform:scale(1.25);opacity:0}}
-
-.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.compare-card{background:#fff;border-radius:var(--radius);padding:28px}
-.compare-card h4{font-size:28px;margin:0 0 8px}
-.compare-card p{color:var(--muted);line-height:1.5;margin:0}
-.pill{display:inline-block;margin-top:18px;background:#e8e8ed;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700}
-
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.product-card{background:#fff;border-radius:var(--radius);overflow:hidden}
-.product-img{height:240px;background:#f5f5f7;display:grid;place-items:center;padding:18px}
-.product-img img{max-height:100%;object-fit:contain;transition:transform .35s ease}
-.product-card:hover .product-img img{transform:translateY(-6px) scale(1.025)}
-.product-body{padding:22px}
-.seller{font-size:12px;color:#707070;font-weight:600}
-.product-body h4{font-size:20px;margin:7px 0}
-.price{font-size:27px;font-weight:700}
-.meta{display:flex;justify-content:space-between;font-size:12px;color:#707070;margin-top:8px}
-.product-body button{margin-top:16px;border:0;background:var(--blue);color:#fff;border-radius:999px;padding:11px 14px;font-weight:700;width:100%;cursor:pointer}
-
-.network{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
-.map{border-radius:var(--radius);overflow:hidden;background:#e9f1f5;min-height:430px}
-.map iframe{width:100%;height:430px;border:0}
-.store-list{background:#fff;border-radius:var(--radius);padding:26px}
-.store-row{display:grid;grid-template-columns:1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid #e5e5e7}
-.store-row:last-child{border-bottom:0}
-.store-row b{display:block}
-.store-row small{color:#707070}
-.time{font-size:13px;font-weight:700;color:#0066cc}
-
-.yc{background:#111;color:#fff;border-radius:var(--radius);padding:44px}
-.yc h2{font-size:52px;line-height:1.05;margin:0 0 28px}
-.yc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.yc h3{margin:0 0 8px}
-.yc p{color:#c8c8cc;line-height:1.5;margin:0}
-.metrics{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.metric{background:#222;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:700}
-
-footer{background:#f5f5f7;padding:44px 0 30px}
-.footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:28px}
-footer h4{margin:0 0 10px}
-footer a,footer p{display:block;color:#707070;font-size:13px;margin:7px 0}
-.copy{border-top:1px solid #d6d6d6;margin-top:24px;padding-top:16px;color:#707070;font-size:12px}
-
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-
-@media(max-width:1000px){
-  .hero-grid,.showcase,.network,.yc-grid{grid-template-columns:1fr}
-  .hero h1{font-size:68px}
-  .showcase-tabs{grid-template-columns:repeat(4,1fr)}
-  .products{grid-template-columns:repeat(2,1fr)}
-  .compare-grid{grid-template-columns:1fr}
-}
-@media(max-width:700px){
-  .nav{grid-template-columns:1fr auto;height:auto;padding:10px 0}
-  .search{grid-column:1/-1;grid-row:2}
-  .navlinks{display:none}
-  .hero{padding-top:56px}
-  .hero h1{font-size:48px;letter-spacing:-2px}
-  .hero-grid{gap:20px}
-  .hero-stage{min-height:390px}
-  .section{padding:76px 0}
-  .section-title{font-size:40px}
-  .showcase-tabs{grid-template-columns:1fr 1fr}
-  .device-stage{min-height:560px}
-  .scene-copy{left:24px;right:24px}
-  .scene-copy h3{font-size:34px}
-  .scene-visual{inset:180px 10px 20px}
-  .products{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-}
+:root{--yellow:#ffe51f;--blue:#11a8f5;--blue2:#158cff;--ink:#111;--muted:#5f6670;--navy:#08304a;--paper:#fff;--cream:#fffdf6;--line:#151515;--green:#b8f3d7;--pink:#ffdce6;--sky:#cde8ff;--beige:#fff1d7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}img{max-width:100%;display:block}button,input{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0 24px}a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:50;background:var(--yellow);border-bottom:2px solid #111}.nav{min-height:68px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}.logo{font-weight:950;font-size:34px;letter-spacing:-2.2px;line-height:1}.place,.zones,.cart{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800}.search{display:flex;align-items:center;background:#fff;border:2px solid #111;border-radius:999px;overflow:hidden}.search input{flex:1;border:0;outline:0;padding:12px 14px;background:#fff}.search button{border:0;border-left:2px solid #111;background:var(--yellow);padding:12px 15px;font-weight:900;cursor:pointer}.navright{display:flex;gap:8px;align-items:center}.chip{border:2px solid #111;border-radius:999px;padding:8px 12px;background:#fff;font-weight:800}.chip.dark{background:#111;color:#fff}.cart{width:42px;height:42px;border:2px solid #111;border-radius:50%;justify-content:center;background:#fff}
+.hero{background:linear-gradient(135deg,#0fa8ff 0%,#1697f7 55%,#1fc0ff 100%);color:#fff;overflow:hidden}.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;min-height:480px;align-items:center;gap:26px;padding-top:38px;padding-bottom:38px}.hero-kicker{display:inline-flex;gap:8px;align-items:center;background:#082735;color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}.hero h1{font-size:66px;line-height:.92;letter-spacing:-3px;margin:18px 0 16px}.hero h1 .yellow{color:var(--yellow)}.hero p{font-size:18px;line-height:1.45;max-width:570px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.btn{border:2px solid #111;border-radius:999px;padding:13px 20px;font-weight:900;cursor:pointer}.btn.yellow{background:var(--yellow);color:#111}.btn.light{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}.hero-stage{position:relative;min-height:400px}.hero-stage .plate{position:absolute;inset:55px 0 55px 45px;background:#fff3;border:1px solid #ffffff55;border-radius:26px;transform:rotate(-3deg)}.hero-stage img{position:absolute;left:10%;top:12%;width:80%;max-height:330px;object-fit:contain;filter:drop-shadow(0 24px 24px rgba(0,0,0,.25));animation:floaty 4s ease-in-out infinite}.price-badge{position:absolute;right:7%;bottom:33px;background:#fff;color:#111;border:2px solid #111;padding:11px 18px;border-radius:999px;font-weight:900}@keyframes floaty{50%{transform:translateY(-12px) rotate(1deg)}}
+section{padding:50px 0}.title{font-size:48px;line-height:.95;letter-spacing:-2px;margin:0 0 8px}.sub{color:#31363c;margin:0 0 22px}.section-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end}.toggle{font-size:12px;font-weight:800}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cat{position:relative;border:2px solid #111;border-radius:20px;min-height:205px;padding:20px;overflow:hidden}.cat h3{font-size:21px;line-height:1.05;margin:0 0 7px}.cat p{font-size:13px;max-width:58%;margin:0}.cat img{position:absolute;right:10px;bottom:12px;width:42%;max-height:135px;object-fit:contain}.cat .circle{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border:2px solid #111;border-radius:50%;display:grid;place-items:center;background:var(--yellow);font-weight:900}.mint{background:var(--green)}.sky{background:var(--sky)}.pink{background:var(--pink)}.cream{background:var(--beige)}.yellowbg{background:var(--yellow)}
+.cashea{margin:22px auto 0;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;background:linear-gradient(90deg,#ffed1c,#ffe51f,#ffeb28);border-radius:18px;padding:20px 26px;overflow:hidden;border:1px solid #e0c900}.cashea-brand{display:flex;gap:10px;align-items:center;font-weight:950;font-size:30px}.cashea-icon{width:48px;height:48px;border-radius:13px;background:#111;color:var(--yellow);display:grid;place-items:center;font-weight:950}.cashea h3{font-size:28px;margin:0 0 5px;line-height:1}.cashea p{margin:0;font-size:14px}.cashea a{background:#0b2d45;color:#fff;padding:12px 16px;border-radius:999px;font-weight:800;font-size:13px}
+.dual{border-top:2px solid #111;border-bottom:2px solid #111;padding-top:38px;padding-bottom:38px}.dual h2{font-size:42px;margin:0 0 18px;letter-spacing:-1.5px}.highlight{background:var(--yellow);border-radius:999px;padding:2px 10px}.dualgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.mode{border:2px solid #111;border-radius:20px;padding:24px;background:#fff}.mode h3{font-size:23px;margin:0 0 14px}.mode ul{margin:0 0 18px;padding-left:22px;line-height:1.6}.mode .cta{display:block;text-align:center;background:var(--yellow);border:2px solid #111;border-radius:999px;padding:11px;font-weight:900}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.filter{border:1.5px solid #111;border-radius:999px;background:#fff;padding:8px 13px;font-weight:800}.filter.active{background:#111;color:#fff}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.product{border:1.5px solid #cfd3d8;background:#fff;border-radius:18px;overflow:hidden;position:relative}.product .badge{position:absolute;top:10px;left:10px;background:#ff4e5c;color:#fff;font-size:11px;font-weight:900;border-radius:999px;padding:6px 9px}.prodimg{height:190px;padding:18px;display:grid;place-items:center;background:#fff}.prodimg img{max-height:100%;object-fit:contain;transition:.3s}.product:hover .prodimg img{transform:translateY(-7px) scale(1.03)}.prodinfo{padding:16px}.prodinfo h3{font-size:16px;margin:0 0 8px}.price{font-size:24px;font-weight:950}.small{font-size:12px;color:#626973}.product button{width:100%;margin-top:12px;background:var(--yellow);border:1.5px solid #111;border-radius:999px;padding:10px;font-weight:900}
+.mapbox{border:2px solid #111;border-radius:18px;overflow:hidden;height:300px}.mapbox iframe{width:100%;height:100%;border:0}.stores{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.store{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1.5px solid #111;border-radius:13px;padding:13px 16px}.store b{display:block}.store small{color:#5f6670}.merchant-cta{margin-top:12px;background:#0b2d45;color:#fff;border-radius:14px;padding:15px 18px;display:flex;justify-content:space-between;align-items:center}.merchant-cta a{background:var(--yellow);color:#111;border-radius:999px;padding:10px 15px;font-weight:900}
+.yc{border:2px solid #111;border-radius:20px;background:#fff;padding:26px}.yc .labels{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid #aaa;border-radius:999px;padding:5px 9px;font-size:11px}.tag.yellow{background:var(--yellow);border-color:var(--yellow)}.yc h2{font-size:38px;line-height:1;margin:12px 0 18px}.ycgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.ycgrid h3{margin:0 0 6px}.ycgrid p{font-size:13px;color:#4d545b}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.review{border:1.5px solid #cfd3d8;border-radius:15px;background:#fff;padding:16px}.stars{color:#ffc400}.review p{font-size:13px}.who{font-size:12px;color:#656b71}
+footer{background:#0a3551;color:#fff;padding:30px 0}.footgrid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:24px}.foot-logo{font-size:30px;font-weight:950;letter-spacing:-2px}.footgrid h4{margin:0 0 9px}.footgrid a,.footgrid p{font-size:12px;color:#d8e3eb;display:block;margin:5px 0}.newsletter{display:flex;background:#fff;border-radius:999px;overflow:hidden}.newsletter input{border:0;outline:0;padding:10px 12px;min-width:0;flex:1}.newsletter button{border:0;background:var(--yellow);width:42px;font-weight:900}
+@media(max-width:900px){.nav{grid-template-columns:auto 1fr}.navright{display:none}.hero .wrap{grid-template-columns:1fr}.hero-stage{min-height:330px}.categories{grid-template-columns:1fr 1fr}.products{grid-template-columns:1fr 1fr}.ycgrid,.reviews,.footgrid{grid-template-columns:1fr 1fr}.cashea{grid-template-columns:1fr}.dualgrid{grid-template-columns:1fr}}
+@media(max-width:620px){.wrap{padding:0 14px}.logo{font-size:28px}.nav{gap:10px}.search input{min-width:0}.hero h1{font-size:48px}.hero .wrap{padding-top:26px}.hero-stage{min-height:280px}.title{font-size:37px}.categories{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.prodimg{height:145px}.stores,.ycgrid,.reviews,.footgrid{grid-template-columns:1fr}.cashea-brand{font-size:25px}.dual h2{font-size:34px}.section-top{display:block}.toggle{margin-top:8px}}
 </style>
 </head>
 <body>
-<div class="ribbon">REZUELVE Guayana · compara stock, precio y entrega en minutos</div>
-<header class="topbar">
+<header>
   <div class="wrap nav">
-    <a class="brand" href="#"><span class="brand-mark">⚡</span><span>REZUELVE</span></a>
-    <div class="search"><input id="q" placeholder="¿Qué necesitas? Ej: planta 3500W, ventilador recargable"><button onclick="searchNow()">Buscar</button></div>
-    <nav class="navlinks"><a href="#soluciones">Soluciones</a><a href="#productos">Productos</a><a href="#comercios">Comercios</a></nav>
+    <a class="logo" href="#">rezuelve</a>
+    <div class="search"><input id="q" placeholder="¿Qué necesitas?"><button onclick="searchNow()">⌕</button></div>
+    <div class="navright"><span class="place">📍 Ciudad Guayana</span><span class="chip">Puerto Ordaz</span><span class="chip dark">San Félix</span><span class="cart">🛒</span></div>
   </div>
 </header>
 
 <main>
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal">
-      <div class="eyebrow">Ciudad Guayana · Puerto Ordaz · San Félix</div>
-      <h1><span>¿Se fue la luz?</span><span>REZUELVE</span><span>en minutos.</span></h1>
-      <p>Encuentra plantas, baterías, ventiladores y enfriadores disponibles cerca. Compara qué comercio lo tiene, cuánto cuesta y quién llega más rápido.</p>
-      <div class="hero-actions"><a class="btn-primary" href="#productos">Ver disponibilidad</a><a class="btn-ghost" href="#soluciones">Explorar soluciones</a></div>
+  <div class="wrap">
+    <div>
+      <span class="hero-kicker">⚡ 3 apagones hoy en Bolívar · comercios activos ahora</span>
+      <h1>¿Se fue la luz?<br><span class="yellow">REZUELVE</span><br>en minutos</h1>
+      <p>Plantas, Power Stations y Ventiladores recargables con entrega desde comercios locales de San Félix y Puerto Ordaz. Sin esperar días.</p>
+      <div class="actions"><a class="btn yellow" href="#productos">Ver productos disponibles →</a><a class="btn light" href="#comercios">Soy comercio local</a></div>
     </div>
-    <div class="hero-stage reveal">
-      <div class="hero-note">Stock local · entrega rápida</div>
-      <div class="hero-product">
-        <img src="https://www.championpowerequipment.co.uk/cdn/shop/files/Champion_2200-Watt-Inverter-110v_92120i_side-view_lihok2.jpg?v=1702282926&width=1200" alt="Planta eléctrica inverter">
-      </div>
-      <div class="hero-badge">Plantas inverter desde $380</div>
+    <div class="hero-stage">
+      <div class="plate"></div>
+      <img src="https://www.championpowerequipment.co.uk/cdn/shop/files/Champion_2200-Watt-Inverter-110v_92120i_side-view_lihok2.jpg?v=1702282926&width=1200" alt="Planta eléctrica">
+      <div class="price-badge">Desde $380 · Hoy</div>
     </div>
   </div>
 </section>
 
-<section class="section gray" id="soluciones">
-  <div class="wrap">
-    <h2 class="section-title reveal">Máquinas que trabajan cuando la ciudad se detiene.</h2>
-    <p class="section-sub reveal">Una vitrina viva de soluciones anti-apagón. Cada máquina tiene movimiento sutil para comunicar autonomía, potencia y disponibilidad real.</p>
-
-    <div class="showcase">
-      <div class="showcase-tabs reveal">
-        <button class="tab active" data-scene="generator">Plantas eléctricas<small>Potencia inmediata</small></button>
-        <button class="tab" data-scene="fan">Ventiladores inteligentes<small>18H de autonomía</small></button>
-        <button class="tab" data-scene="cooler">Enfriadores autónomos<small>Bajo consumo</small></button>
-        <button class="tab" data-scene="battery">Baterías & power stations<small>Respaldo portátil</small></button>
-      </div>
-
-      <div class="device-stage reveal">
-        <article class="device-scene active" id="scene-generator">
-          <div class="scene-copy"><h3>Potencia que aparece cuando hace falta.</h3><p>Plantas inverter para hogar, comercio y respaldo inmediato.</p></div>
-          <div class="scene-visual"><img class="generator-move" src="https://www.championpowerequipment.co.uk/cdn/shop/files/Champion_2200-Watt-Inverter-110v_92120i_side-view_lihok2.jpg?v=1702282926&width=1200" alt="Generador inverter"></div>
-        </article>
-
-        <article class="device-scene" id="scene-fan">
-          <div class="scene-copy"><h3>Ventilación que sigue funcionando.</h3><p>Ventiladores recargables con oscilación, USB y autonomía extendida.</p></div>
-          <div class="scene-visual"><img class="fan-move" src="https://down-th.img.susercontent.com/file/th-11134207-7r992-lnto6up4h013e7" alt="Ventilador recargable"></div>
-        </article>
-
-        <article class="device-scene" id="scene-cooler">
-          <div class="scene-copy"><h3>Frío sin depender de la red.</h3><p>Enfriadores y soluciones portátiles de bajo consumo para el calor de Guayana.</p></div>
-          <div class="scene-visual"><div class="cool-glow"></div><img class="cooler-move" src="https://retail.mideasouthafrica.com/wp-content/uploads/2021/06/AC120-16AR-Front.jpg" alt="Enfriador portátil"></div>
-        </article>
-
-        <article class="device-scene" id="scene-battery">
-          <div class="scene-copy"><h3>Energía que puedes mover contigo.</h3><p>Power stations de litio para mantener lo esencial encendido.</p></div>
-          <div class="scene-visual"><div class="energy-ring"></div><img class="battery-move" src="https://www.cygnett.com/cdn/shop/files/CY5868CYPPS_1000W-614.4WhPortablePowerStation-4_2376x.png?v=1775608579" alt="Power station"></div>
-        </article>
-      </div>
-    </div>
+<section id="soluciones">
+<div class="wrap">
+  <div class="section-top"><div><h2 class="title">Resuelve tu<br>emergencia</h2><p class="sub">Todo para vivir sin apagones en Guayana.</p></div><div class="toggle">Solo entrega en minutos ◉</div></div>
+  <div class="categories">
+    <article class="cat mint"><h3>Plantas Eléctricas<br>1000W–8000W</h3><p>Desde $380</p><img src="https://www.championpowerequipment.co.uk/cdn/shop/files/Champion_2200-Watt-Inverter-110v_92120i_side-view_lihok2.jpg?v=1702282926&width=1200" alt=""><span class="circle">→</span></article>
+    <article class="cat sky"><h3>Centrales Eléctricas<br>Batería Li-Ion</h3><p>EcoFlow · Bluetti · Anker</p><img src="https://www.cygnett.com/cdn/shop/files/CY5868CYPPS_1000W-614.4WhPortablePowerStation-4_2376x.png?v=1775608579" alt=""><span class="circle">→</span></article>
+    <article class="cat sky"><h3>Kits Anti-Apagón<br>Armados</h3><p>Planta + ventilador + luces + power station.</p><span class="circle">→</span></article>
+    <article class="cat pink"><h3>Ventiladores Portátiles<br>con Batería</h3><p>USB · recargables · alta duración</p><img src="https://down-th.img.susercontent.com/file/th-11134207-7r992-lnto6up4h013e7" alt=""><span class="circle">→</span></article>
+    <article class="cat pink"><h3>Bombillos y Lámparas<br>Recargables</h3><p>LED · Solar</p><span style="font-size:70px;position:absolute;right:34px;bottom:44px">💡</span><span class="circle">→</span></article>
+    <article class="cat yellowbg"><h3>Enfriadores Autónomos</h3><p>Aire fresco sin instalación. Casa, oficina y comercio.</p><img src="https://retail.mideasouthafrica.com/wp-content/uploads/2021/06/AC120-16AR-Front.jpg" alt=""><span class="circle">→</span></article>
   </div>
+
+  <div class="cashea">
+    <div class="cashea-brand"><span class="cashea-icon">C</span>cashea</div>
+    <div><h3>Compra hoy.<br>Paga después con Cashea.</h3><p>Paga una inicial y el resto en cuotas sin interés.</p></div>
+    <a href="#productos">Ver productos con Cashea →</a>
+  </div>
+</div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <h2 class="section-title reveal">Compara antes de comprar.</h2>
-    <p class="section-sub reveal">REZUELVE no es una tienda única. Es una capa de comparación local para descubrir la mejor opción disponible.</p>
-    <div class="compare-grid">
-      <div class="compare-card reveal"><h4>Precio</h4><p>Compara la misma necesidad entre varios comercios.</p><span class="pill">Mejor oferta</span></div>
-      <div class="compare-card reveal"><h4>Tiempo</h4><p>Ve quién puede entregar primero según la zona.</p><span class="pill">Entrega en minutos</span></div>
-      <div class="compare-card reveal"><h4>Confianza</h4><p>Reputación, stock y comercio verificado en un solo lugar.</p><span class="pill">Stock local</span></div>
-    </div>
+<section class="dual">
+<div class="wrap">
+  <h2>Dos formas de <span class="highlight">REZUELVE</span></h2>
+  <div class="dualgrid">
+    <article class="mode"><h3>⚡ Entrega en MINUTOS<br>en Ciudad Guayana</h3><ul><li>Comercios locales verificados</li><li>San Félix y Puerto Ordaz</li><li>Productos nuevos con garantía</li><li>Entrega local rápida</li></ul><a class="cta" href="#productos">Ver productos con entrega rápida →</a></article>
+    <article class="mode"><h3>🚚 Envío Nacional<br>a Todo el País</h3><ul><li>Plantas, power stations y más</li><li>Envíos a otras ciudades</li><li>Productos nuevos y con garantía</li><li>Operadores logísticos aliados</li></ul><a class="cta" href="#productos">Ver catálogo nacional →</a></article>
   </div>
+</div>
 </section>
 
-<section class="section gray" id="productos">
-  <div class="wrap">
-    <h2 class="section-title reveal">Disponibles ahora.</h2>
-    <p class="section-sub reveal" id="count">4 publicaciones encontradas.</p>
-    <div class="products">
-      <article class="product-card reveal" data-tags="planta generador inverter">
-        <div class="product-img"><img src="https://www.championpowerequipment.co.uk/cdn/shop/files/Champion_2200-Watt-Inverter-110v_92120i_side-view_lihok2.jpg?v=1702282926&width=1200" alt=""></div>
-        <div class="product-body"><div class="seller">Ferretería La Económica · San Félix</div><h4>Planta Inverter Silenciosa</h4><div class="price">$489</div><div class="meta"><span>12 disponibles</span><span>32 min</span></div><button>Comparar ofertas</button></div>
-      </article>
-      <article class="product-card reveal" data-tags="ventilador inteligente recargable">
-        <div class="product-img"><img src="https://down-th.img.susercontent.com/file/th-11134207-7r992-lnto6up4h013e7" alt=""></div>
-        <div class="product-body"><div class="seller">Power Center · Unare</div><h4>Ventilador Inteligente 18H</h4><div class="price">$89</div><div class="meta"><span>23 disponibles</span><span>28 min</span></div><button>Comparar ofertas</button></div>
-      </article>
-      <article class="product-card reveal" data-tags="power station bateria litio">
-        <div class="product-img"><img src="https://www.cygnett.com/cdn/shop/files/CY5868CYPPS_1000W-614.4WhPortablePowerStation-4_2376x.png?v=1775608579" alt=""></div>
-        <div class="product-body"><div class="seller">ElectroGuayana · Alta Vista</div><h4>Power Station 1000W</h4><div class="price">$890</div><div class="meta"><span>5 disponibles</span><span>41 min</span></div><button>Comparar ofertas</button></div>
-      </article>
-      <article class="product-card reveal" data-tags="enfriador autonomo 12v">
-        <div class="product-img"><img src="https://retail.mideasouthafrica.com/wp-content/uploads/2021/06/AC120-16AR-Front.jpg" alt=""></div>
-        <div class="product-body"><div class="seller">Depósito El Sol · Castillito</div><h4>Enfriador Autónomo 12V</h4><div class="price">$120</div><div class="meta"><span>9 disponibles</span><span>35 min</span></div><button>Comparar ofertas</button></div>
-      </article>
-    </div>
+<section id="productos">
+<div class="wrap">
+  <h2 class="title" style="font-size:39px">Más vendidos esta semana en Bolívar 🔥</h2>
+  <div class="filters"><button class="filter active">Todos</button><button class="filter">Plantas</button><button class="filter">Ventiladores</button><button class="filter">Kits</button><button class="filter">Iluminación</button><button class="filter">Enfriadores</button></div>
+  <div class="products">
+    <article class="product" data-tags="planta generador inverter"><span class="badge">⚡ Entrega en minutos</span><div class="prodimg"><img src="https://www.championpowerequipment.co.uk/cdn/shop/files/Champion_2200-Watt-Inverter-110v_92120i_side-view_lihok2.jpg?v=1702282926&width=1200" alt=""></div><div class="prodinfo"><h3>Planta POWERMAX 3500W Inversor Silenciosa</h3><div class="price">$489</div><div class="small">★ 4.8 · Envío hoy</div><button>Agregar al carrito</button></div></article>
+    <article class="product" data-tags="ventilador recargable"><span class="badge">⚡ Entrega en minutos</span><div class="prodimg"><img src="https://down-th.img.susercontent.com/file/th-11134207-7r992-lnto6up4h013e7" alt=""></div><div class="prodinfo"><h3>Ventilador Recargable 18" con Luz LED</h3><div class="price">$89</div><div class="small">★ 4.6 · Envío hoy</div><button>Agregar al carrito</button></div></article>
+    <article class="product" data-tags="power station bateria"><span class="badge">⚡ Entrega en minutos</span><div class="prodimg"><img src="https://www.cygnett.com/cdn/shop/files/CY5868CYPPS_1000W-614.4WhPortablePowerStation-4_2376x.png?v=1775608579" alt=""></div><div class="prodinfo"><h3>EcoFlow River 2 · Central Eléctrica 600Wh</h3><div class="price">$880</div><div class="small">★ 4.9 · Envío hoy</div><button>Agregar al carrito</button></div></article>
+    <article class="product" data-tags="enfriador aire"><span class="badge">⚡ Entrega en minutos</span><div class="prodimg"><img src="https://retail.mideasouthafrica.com/wp-content/uploads/2021/06/AC120-16AR-Front.jpg" alt=""></div><div class="prodinfo"><h3>Aire Acondicionado Portátil 10.000 BTU</h3><div class="price">$120</div><div class="small">★ 4.8 · Envío hoy</div><button>Agregar al carrito</button></div></article>
   </div>
+</div>
 </section>
 
-<section class="section" id="comercios">
-  <div class="wrap">
-    <h2 class="section-title reveal">Una red, no un depósito.</h2>
-    <p class="section-sub reveal">El inventario ya existe en la ciudad. REZUELVE lo indexa, lo hace comparable y lo conecta con entrega local.</p>
-    <div class="network">
-      <div class="map reveal"><iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-62.80%2C8.20%2C-62.55%2C8.40&layer=mapnik&marker=8.31%2C-62.72"></iframe></div>
-      <div class="store-list reveal">
-        <div class="store-row"><div><b>Ferretería La Económica</b><small>Centro San Félix</small></div><div class="time">32 min</div></div>
-        <div class="store-row"><div><b>ElectroGuayana</b><small>Alta Vista</small></div><div class="time">41 min</div></div>
-        <div class="store-row"><div><b>Power Center</b><small>Unare</small></div><div class="time">28 min</div></div>
-        <div class="store-row"><div><b>Depósito El Sol</b><small>Castillito</small></div><div class="time">35 min</div></div>
-      </div>
-    </div>
-  </div>
+<section id="comercios">
+<div class="wrap">
+  <h2 class="title" style="font-size:39px">Red de comercios locales verificados en Ciudad Guayana</h2>
+  <p class="sub">Encuentra y compra desde comercios de San Félix y Puerto Ordaz con entrega rápida.</p>
+  <div class="mapbox"><iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-62.80%2C8.20%2C-62.55%2C8.40&layer=mapnik&marker=8.31%2C-62.72"></iframe></div>
+  <div class="stores"><div class="store"><div><b>ElectroMax – San Félix</b><small>Plantas y herramientas</small></div><b>★ 4.9</b></div><div class="store"><div><b>Clima Store – Puerto Ordaz</b><small>Aires y ventilación</small></div><b>★ 4.8</b></div><div class="store"><div><b>TecnoGuayana – Alta Vista</b><small>Iluminación y accesorios</small></div><b>★ 4.7</b></div><div class="store"><div><b>Guayana Tech – Unare</b><small>Tecnología y energía</small></div><b>★ 4.6</b></div></div>
+  <div class="merchant-cta"><div><b>¿Tienes un comercio en Guayana?</b><br><small>Únete a nuestra red y vende en REZUELVE.</small></div><a href="#">Registrarme como comercio →</a></div>
+</div>
 </section>
 
-<section class="section gray">
-  <div class="wrap">
-    <div class="yc reveal">
-      <h2>El Trivago de las soluciones urgentes.</h2>
-      <div class="yc-grid">
-        <div><h3>Problema</h3><p>El stock está fragmentado entre tiendas y el usuario no sabe quién tiene lo que necesita ahora.</p></div>
-        <div><h3>Solución</h3><p>REZUELVE compara precio, disponibilidad, zona y tiempo de entrega.</p></div>
-        <div><h3>Modelo</h3><p>Comisión por transacción, fulfillment local y suscripción para comercios.</p></div>
-      </div>
-      <div class="metrics"><span class="metric">MVP Ciudad Guayana</span><span class="metric">Wedge: apagones</span><span class="metric">Expansión: otras urgencias locales</span></div>
-    </div>
+<section>
+<div class="wrap">
+  <div class="yc">
+    <div class="labels"><span class="tag yellow">Nuestra historia</span><span class="tag">100M idea</span><span class="tag">Creado en Ciudad Guayana</span></div>
+    <h2>Por qué esto es un<br>$100M negocio para YC</h2>
+    <div class="ycgrid"><div><h3>🔴 Problema</h3><p>Los apagones afectan directamente a miles de venezolanos. Conseguir soluciones es difícil, lento y poco confiable.</p></div><div><h3>🟡 Solución</h3><p>REZUELVE conecta comercios locales, inventario y usuarios en una sola plataforma con entrega rápida.</p></div><div><h3>🔵 Mercado y Modelo</h3><p>Marketplace + logística local. Modelo escalable a todo Latinoamérica mediante comisión por venta.</p></div></div>
   </div>
+  <h3 style="font-size:24px;margin-bottom:12px">Lo que dice Guayana ⭐ 4.8 (187 reseñas)</h3>
+  <div class="reviews"><div class="review"><div class="stars">★★★★★</div><p>“Me llegó la planta rapidísimo. Excelente servicio.”</p><div class="who">Carlos M. · San Félix</div></div><div class="review"><div class="stars">★★★★★</div><p>“El ventilador perfecto para mi negocio. 100% recomendado.”</p><div class="who">María G. · Puerto Ordaz</div></div><div class="review"><div class="stars">★★★★★</div><p>“Productos originales y buena garantía. Muy confiable.”</p><div class="who">Luis R. · Alta Vista</div></div></div>
+</div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap footer-grid">
-    <div><div class="brand"><span class="brand-mark">⚡</span><span>REZUELVE</span></div><p>Comparador local de soluciones urgentes para Ciudad Guayana.</p></div>
-    <div><h4>Soluciones</h4><a href="#soluciones">Plantas</a><a href="#soluciones">Ventiladores</a><a href="#soluciones">Power Stations</a></div>
-    <div><h4>Comercios</h4><a href="#comercios">San Félix</a><a href="#comercios">Puerto Ordaz</a><a href="#comercios">Registrar tienda</a></div>
-    <div><h4>REZUELVE</h4><a href="#productos">Cómo funciona</a><a href="#productos">Comparar</a><a href="#comercios">Contacto</a></div>
-  </div>
-  <div class="wrap copy">REZUELVE © 2026 · Ciudad Guayana, Bolívar, Venezuela · MVP</div>
+<div class="wrap footgrid"><div><div class="foot-logo">rezuelve</div><p>Tu ciudad, sin límites.</p></div><div><h4>Categorías</h4><a>Plantas eléctricas</a><a>Power stations</a><a>Ventiladores</a><a>Enfriadores</a></div><div><h4>Información</h4><a>Quiénes somos</a><a>Política de privacidad</a><a>Contacto</a></div><div><h4>Recibe ofertas y comercios nuevos</h4><div class="newsletter"><input placeholder="Tu correo electrónico"><button>→</button></div></div></div>
 </footer>
 
 <script>
-const tabs=[...document.querySelectorAll('.tab')];
-const scenes=[...document.querySelectorAll('.device-scene')];
-let currentScene=0;
-function activateScene(name){
-  tabs.forEach((t,i)=>{const active=t.dataset.scene===name;t.classList.toggle('active',active);if(active)currentScene=i});
-  scenes.forEach(s=>s.classList.toggle('active',s.id==='scene-'+name));
-}
-tabs.forEach(t=>t.addEventListener('click',()=>activateScene(t.dataset.scene)));
-setInterval(()=>{currentScene=(currentScene+1)%tabs.length;activateScene(tabs[currentScene].dataset.scene)},4500);
-
-const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-function searchNow(){
-  const q=document.getElementById('q').value.toLowerCase().trim();
-  const cards=[...document.querySelectorAll('.product-card')];
-  let n=0;
-  cards.forEach(c=>{const ok=!q||(c.innerText+' '+c.dataset.tags).toLowerCase().includes(q);c.style.display=ok?'block':'none';if(ok)n++});
-  document.getElementById('count').textContent=n+' publicaciones encontradas.';
-  document.getElementById('productos').scrollIntoView({behavior:'smooth'});
-}
+function searchNow(){const q=document.getElementById('q').value.toLowerCase().trim();document.querySelectorAll('.product').forEach(c=>c.style.display=!q||(c.innerText+' '+c.dataset.tags).toLowerCase().includes(q)?'block':'none');document.getElementById('productos').scrollIntoView({behavior:'smooth'})}
 document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')searchNow()});
-document.querySelectorAll('.product-card button').forEach(b=>b.addEventListener('click',()=>alert('MVP: aquí abriremos la comparación de ofertas por comercio.')));
+document.querySelectorAll('.product button').forEach(b=>b.addEventListener('click',()=>alert('MVP: este botón abrirá la compra o contacto con el comercio.')));
+document.querySelectorAll('.filter').forEach(f=>f.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));f.classList.add('active')}));
 </script>
 </body>
 </html>
